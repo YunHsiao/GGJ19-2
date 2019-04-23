@@ -52,8 +52,10 @@ public class Portal : MonoBehaviour {
         Vector3 pos = t.target.transform.position + dir;
         manager.player.SetPosition(t.targetWindow, pos.x, pos.y, pos.z);
         manager.player.SendPlayerMsg(t.targetWindow, t.targetPortalIdx);
+        // wrap up this end
         collider.gameObject.SetActive(false);
         manager.LeavingPortal(t.targetPortalIdx);
+        Camera.main.gameObject.GetComponent<CameraFollow>().freezed = false;
     }
 
     void Update() {
